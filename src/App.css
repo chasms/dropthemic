@@ -14,6 +14,26 @@
   color: white;
 }
 
+/*.container {
+  height: 100%;
+  width: 100%;
+}*/
+
+.songs {
+  position: absolute;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: blue;
+  border-style: solid;
+  width: auto;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.song {
+  padding: 10px;
+}
+
 .App-intro {
   font-size: large;
 }

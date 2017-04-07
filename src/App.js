@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import config from '../.env.js'
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -40,10 +41,11 @@ class App extends Component {
 
   const SongList = (props) => {
     return (
-      <div className="col-xs-4 songs">
-        {props.songs.map(song => <SongListItem
-          key={song.track_id}
+      <div className="songs">
+        {props.songs.map((song, index) => <SongListItem
+          key={index}
           song={song}
+          index={index}
           />)
         }
       </div>
@@ -52,13 +54,21 @@ class App extends Component {
 
   const SongListItem = (props) => {
     return (
-      <div id={props.song.track_id}>
+      <div className="song" id={props.index} data-id={props.song.track_id} style={isOdd(props.index)}>
         <h5>{props.song.track_title} by {props.song.artist_name}</h5>
         <audio controls>
           <source src={"http://files.freemusicarchive.org/" + props.song.track_file} type="audio/mpeg"/>
         </audio>
       </div>
     )
+  }
+
+  function isOdd(num) {
+    if (num % 2 === 1) {
+      return {backgroundColor: 'rgba(143, 217, 240, 0.5)'}
+    } else {
+      return {backgroundColor: 'white'}
+    }
   }
 
 
